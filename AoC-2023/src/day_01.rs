@@ -1,14 +1,8 @@
+use crate::Solution;
 use regex::Regex;
 use std::collections::HashMap;
-use std::fs::read_to_string;
 
-fn read_lines(filename: &str) -> Vec<String> {
-    let mut result = Vec::new();
-    for line in read_to_string(filename).unwrap().lines() {
-        result.push(line.to_string())
-    }
-    result
-}
+pub struct Day01;
 
 fn create_map() -> HashMap<String, u8> {
     let mut map: HashMap<String, u8> = HashMap::new();
@@ -58,22 +52,24 @@ fn get_sum(lines: &Vec<String>, re: Regex, map: Option<&HashMap<String, u8>>) ->
     return sum;
 }
 
-fn day_01() -> (u32, u32) {
+impl Solution for Day01 {
+    type Item = u32;
 
-    let lines = read_lines("input/day_01.txt");
+    fn day(&self) -> u8 {
+        return 1;
+    }
 
-    let mut re = Regex::new(r"([0-9])").unwrap();
-    let part1 = get_sum(&lines, re, None);
-
-    re = Regex::new("([0-9]|one|two|three|four|five|six|seven|eight|nine)").unwrap();
-    let map = create_map();
-    let part2 = get_sum(&lines, re, Some(&map));
-
-    return (part1, part2);
-}
-
-fn main() {
-    let res: (u32, u32) = day_01();
-    println!("**AoC-2023 day 1 part 1: {} **", res.0);
-    println!("**AoC-2023 day 1 part 2: {} **", res.1);
+    fn part1(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+        let re = Regex::new(r"([0-9])").unwrap();
+        let result = get_sum(&lines, re, None);
+        return Ok(result);
+    }
+    
+    fn part2(&self, lines: &Vec<String>) -> Result<Self::Item, &str> { 
+        let re = Regex::new("([0-9]|one|two|three|four|five|six|seven|eight|nine)").unwrap();
+        let map = create_map();
+        let result = get_sum(&lines, re, Some(&map));
+        return Ok(result);
+    }
+    
 }
