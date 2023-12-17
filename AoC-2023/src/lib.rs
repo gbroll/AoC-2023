@@ -4,6 +4,7 @@ pub mod utils;
 pub mod day_01;
 pub mod day_02;
 pub mod day_03;
+pub mod day_04;
 
 
 pub trait Solution {
@@ -43,4 +44,5 @@ pub trait Solution {
         let res = self.solve(input);
         self.print_res(self.day(), res);
     }
+
 }
