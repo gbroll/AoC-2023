@@ -12,11 +12,11 @@ pub trait Solution {
     
     fn day(&self) -> u8;
 
-    fn part1(&self, input: &Vec<String>) -> Result<Self::Item, &str> {
+    fn part1(&self, _input: &Vec<String>) -> Result<Self::Item, &str> {
         return Err("Not yet implemented");
     }
 
-    fn part2(&self, input: &Vec<String>) -> Result<Self::Item, &str> {
+    fn part2(&self, _input: &Vec<String>) -> Result<Self::Item, &str> {
         return Err("Not yet implemented");
     }
 
@@ -30,11 +30,11 @@ pub trait Solution {
                 match part_res {
                     Ok(val) => {
                         println!("**AoC 2023 day {} part {}: {} **", 
-                        day.to_string(), part.to_string(), val.to_string()); 
+                        day.to_string(), (part+1).to_string(), val.to_string()); 
                     }
                     Err(msg) => {
                         println!("**AoC 2023 day {} part {}: {} **", 
-                        day.to_string(), part.to_string(), msg.to_string());
+                        day.to_string(), (part+1).to_string(), msg.to_string());
                     }
                 }
             }
