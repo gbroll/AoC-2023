@@ -11,11 +11,12 @@ fn run(day: u8) {
         5 => day_05::Day05.run(&lines),
         6 => day_06::Day06.run(&lines),
         7 => day_07::Day07.run(&lines),
+        8 => day_08::Day08.run(&lines),
         _ => panic!("Unexpected day"),
     };
 }
 
 fn main() {
-    let day: u8 = 7;
+    let day: u8 = 8;
     run(day);
 }
